@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ItzamnaFarma – Doctores (Mockup)</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    :root { --brand: #0ea5e9; }
+    body { background: #f6f8fb; }
+    .brand-gradient { background: linear-gradient(90deg, var(--brand), #22c55e); }
+    .nav-brand { font-weight: 800; letter-spacing: .5px; }
+
+    /* Tarjetas dashboard */
+    .dash-card { cursor: pointer; transition: transform .12s ease, box-shadow .12s ease; border:1px solid #e2e8f0; border-radius:1rem; box-shadow: 0 .25rem .75rem rgba(15,23,42,.06); }
+    .dash-card:hover { transform: translateY(-2px); box-shadow: 0 .75rem 1.25rem rgba(0,0,0,.08); }
+    .tile-icon{ width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#e0f2fe; color:#0369a1; }
+
+    /* Placeholders */
+    .qr-box { width: 180px; height: 180px; border: 2px dashed #94a3b8; border-radius: .75rem; display:flex; align-items:center; justify-content:center; font-weight: 600; color:#64748b; background: repeating-linear-gradient(45deg, #f8fafc 0, #f8fafc 10px, #f1f5f9 10px, #f1f5f9 20px); }
+    .video-box { height: 220px; border:2px dashed #94a3b8; border-radius:.75rem; display:flex; align-items:center; justify-content:center; color:#64748b; background:#f8fafc; }
+
+    /* Secciones */
+    .section { display: none; }
+    .section.active { display: block; }
+
+    .chip { background: #e2e8f0; border-radius: 999px; padding: .25rem .65rem; font-size: .85rem; }
+    .table thead th { background: #f1f5f9; }
+    .form-section-title { font-weight:700; color:#0f172a; }
+    .btn{ border-width:2px; border-radius:.65rem; }
+    .btn i{ margin-right:.35rem; }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark brand-gradient">
+    <div class="container py-2">
+      <span class="navbar-brand nav-brand"><i class="bi bi-activity me-2"></i>ItzamnaFarma – Doctores</span>
+      <div class="ms-auto small text-white-50">Demo Ver 1</div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <!-- DASHBOARD -->
+    <section id="view-dashboard" class="section active">
+      <div class="d-flex justify-content-between align-items-end">
+        <div>
+          <h1 class="h3 mb-1">Panel del Médico</h1>
+          <p class="text-secondary mb-4">Elige una opción para continuar.</p>
+        </div>
+        <span class="chip">Usuario: Dr. Bizmarck Barahona /span>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <div class="card dash-card" data-target="view-agenda">
+            <div class="card-body d-flex align-items-center">
+              <div class="me-3 tile-icon"><i class="bi bi-calendar-week m-0"></i></div>
+              <div>
+                <h5 class="card-title mb-1">Agenda de Hoy</h5>
+                <p class="mb-0 text-secondary small">Citas por hora y estado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card dash-card" data-target="view-pacientes">
+            <div class="card-body d-flex align-items-center">
+              <div class="me-3 tile-icon"><i class="bi bi-people m-0"></i></div>
+              <div>
+                <h5 class="card-title mb-1">Pacientes</h5>
+                <p class="mb-0 text-secondary small">Búsqueda y ficha rápida.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card dash-card" data-target="view-consulta">
+            <div class="card-body d-flex align-items-center">
+              <div class="me-3 tile-icon"><i class="bi bi-clipboard2-pulse m-0"></i></div>
+              <div>
+                <h5 class="card-title mb-1">Consulta Rápida</h5>
+                <p class="mb-0 text-secondary small">Notas SOAP y signos vitales.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card dash-card" data-target="view-recetas">
+            <div class="card-body d-flex align-items-center">
+              <div class="me-3 tile-icon"><i class="bi bi-file-medical m-0"></i></div>
+              <div>
+                <h5 class="card-title mb-1">Recetas</h5>
+                <p class="mb-0 text-secondary small">Crear, enviar y ver historial.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card dash-card" data-target="view-validar">
+            <div class="card-body d-flex align-items-center">
+              <div class="me-3 tile-icon"><i class="bi bi-qr-code-scan m-0"></i></div>
+              <div>
+                <h5 class="card-title mb-1">Validar Receta</h5>
+                <p class="mb-0 text-secondary small">Escanear/pegar token de receta.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card dash-card" data-target="view-historial">
+            <div class="card-body d-flex align-items-center">
+              <div class="me-3 tile-icon"><i class="bi bi-clock-history m-0"></i></div>
+              <div>
+                <h5 class="card-title mb-1">Historial</h5>
+                <p class="mb-0 text-secondary small">Consultas, recetas y mediciones.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card dash-card" data-target="view-tareas">
+            <div class="card-body d-flex align-items-center">
+              <div class="me-3 tile-icon"><i class="bi bi-bell m-0"></i></div>
+              <div>
+                <h5 class="card-title mb-1">Tareas / Alertas</h5>
+                <p class="mb-0 text-secondary small">Recordatorios clínicos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card dash-card" data-target="view-teleconsulta">
+            <div class="card-body d-flex align-items-center">
+              <div class="me-3 tile-icon"><i class="bi bi-camera-video m-0"></i></div>
+              <div>
+                <h5 class="card-title mb-1">Teleconsulta</h5>
+                <p class="mb-0 text-secondary small">Programar e iniciar sesiones.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card dash-card" data-target="view-config">
+            <div class="card-body d-flex align-items-center">
+              <div class="me-3 tile-icon"><i class="bi bi-gear m-0"></i></div>
+              <div>
+                <h5 class="card-title mb-1">Configuración</h5>
+                <p class="mb-0 text-secondary small">Perfil, horarios y firma.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1) AGENDA DE HOY -->
+    <section id="view-agenda" class="section">
+      <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-secondary me-2" data-target="view-dashboard"><i class="bi bi-arrow-left"></i>Volver</button>
+        <h2 class="h4 mb-0">Agenda de Hoy</h2>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-3">
+          <label class="form-label">Consultorio</label>
+          <select class="form-select">
+            <option>Santa Ana</option>
+            <option>San Román</option>
+            <option>Siglo XXI</option>
+            <option>Lerma</option>
+            <option>Morelos</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Fecha</label>
+          <input type="date" class="form-control" />
+        </div>
+        <div class="col-md-6 d-flex align-items-end gap-2">
+          <button class="btn btn-outline-primary"><i class="bi bi-arrow-repeat"></i>Refrescar</button>
+          <button class="btn btn-outline-secondary"><i class="bi bi-download"></i>Exportar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Hora</th>
+                  <th>Paciente</th>
+                  <th>Motivo</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>08:30</td><td>Juliana Doe</td><td>Familiar</td>
+                  <td><span class="badge text-bg-warning">En sala</span></td>
+                  <td class="text-nowrap">
+                    <div class="btn-group btn-group-sm">
+                      <button class="btn btn-success">Llamar</button>
+                      <button class="btn btn-outline-secondary">Reprog.</button>
+                      <button class="btn btn-outline-danger">Cancelar</button>
+                      <button class="btn btn-primary" data-target="view-consulta">Abrir consulta</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>09:00</td><td>Carlos Méndez</td><td>Pediatra</td>
+                  <td><span class="badge text-bg-secondary">Programada</span></td>
+                  <td class="text-nowrap">
+                    <div class="btn-group btn-group-sm">
+                      <button class="btn btn-success">Llamar</button>
+                      <button class="btn btn-outline-secondary">Reprog.</button>
+                      <button class="btn btn-outline-danger">Cancelar</button>
+                      <button class="btn btn-primary" data-target="view-consulta">Abrir consulta</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>09:30</td><td>Ana López</td><td>Curación</td>
+                  <td><span class="badge text-bg-info">En camino</span></td>
+                  <td class="text-nowrap">
+                    <div class="btn-group btn-group-sm">
+                      <button class="btn btn-success">Llamar</button>
+                      <button class="btn btn-outline-secondary">Reprog.</button>
+                      <button class="btn btn-outline-danger">Cancelar</button>
+                      <button class="btn btn-primary" data-target="view-consulta">Abrir consulta</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2) PACIENTES -->
+    <section id="view-pacientes" class="section">
+      <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-secondary me-2" data-target="view-dashboard"><i class="bi bi-arrow-left"></i>Volver</button>
+        <h2 class="h4 mb-0">Pacientes</h2>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-4">
+          <label class="form-label">Buscar</label>
+          <input class="form-control" placeholder="Nombre, CURP, teléfono…" />
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Filtro</label>
+          <select class="form-select">
+            <option>Todos</option>
+            <option>Crónicos (DM/HTA)</option>
+            <option>Pediátricos</option>
+            <option>Adulto mayor</option>
+          </select>
+        </div>
+        <div class="col-md-5 d-flex align-items-end gap-2">
+          <button class="btn btn-outline-primary"><i class="bi bi-search"></i>Buscar</button>
+          <button class="btn btn-success"><i class="bi bi-person-plus"></i>Nuevo paciente</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Edad</th>
+                  <th>Teléfono</th>
+                  <th>Alergias</th>
+                  <th>Últimos signos</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Juliana Doe</td><td>35</td><td>9811067872</td><td>Penicilina</td><td>PA 120/80 – Glu 95</td>
+                  <td class="text-nowrap">
+                    <div class="btn-group btn-group-sm">
+                      <button class="btn btn-primary" data-target="view-consulta">Abrir ficha</button>
+                      <button class="btn btn-outline-secondary" data-target="view-historial">Historial</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Carlos Méndez</td><td>7</td><td>—</td><td>N/K</td><td>PA 105/65 – Glu 90</td>
+                  <td class="text-nowrap">
+                    <div class="btn-group btn-group-sm">
+                      <button class="btn btn-primary" data-target="view-consulta">Abrir ficha</button>
+                      <button class="btn btn-outline-secondary" data-target="view-historial">Historial</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3) CONSULTA RÁPIDA (SOAP) -->
+    <section id="view-consulta" class="section">
+      <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-secondary me-2" data-target="view-dashboard"><i class="bi bi-arrow-left"></i>Volver</button>
+        <h2 class="h4 mb-0">Consulta Rápida</h2>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-12 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="form-section-title mb-3">Datos de la consulta</div>
+              <div class="mb-3">
+                <label class="form-label">Paciente</label>
+                <input class="form-control" placeholder="Seleccionado desde Agenda/Pacientes" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Motivo</label>
+                <select class="form-select">
+                  <option>Familiar</option>
+                  <option>Pediatra</option>
+                  <option>Curación</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Signos vitales</label>
+                <div class="row g-2">
+                  <div class="col-6"><input class="form-control" placeholder="PA sistólica" /></div>
+                  <div class="col-6"><input class="form-control" placeholder="PA diastólica" /></div>
+                  <div class="col-6"><input class="form-control" placeholder="Glucosa (mg/dL)" /></div>
+                  <div class="col-6"><input class="form-control" placeholder="Temp (°C)" /></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-8">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">S – Subjetivo</label>
+                  <textarea class="form-control" rows="4" placeholder="Síntomas, antecedentes, alergias…"></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">O – Objetivo</label>
+                  <textarea class="form-control" rows="4" placeholder="Exploración física, hallazgos…"></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">A – Análisis</label>
+                  <textarea class="form-control" rows="3" placeholder="Impresión diagnóstica"></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">P – Plan</label>
+                  <textarea class="form-control" rows="3" placeholder="Tratamiento, indicaciones, seguimiento"></textarea>
+                </div>
+                <div class="col-12 d-flex justify-content-end gap-2">
+                  <button class="btn btn-outline-secondary"><i class="bi bi-paperclip"></i>Adjuntar archivo</button>
+                  <button class="btn btn-primary"><i class="bi bi-journal-check"></i>Cerrar consulta y generar receta</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) RECETAS -->
+    <section id="view-recetas" class="section">
+      <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-secondary me-2" data-target="view-dashboard"><i class="bi bi-arrow-left"></i>Volver</button>
+        <h2 class="h4 mb-0">Recetas</h2>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-5">
+          <label class="form-label">Paciente</label>
+          <input class="form-control" placeholder="Seleccionar" />
+        </div>
+        <div class="col-md-7 d-flex align-items-end justify-content-end gap-2">
+          <button class="btn btn-outline-primary"><i class="bi bi-plus-circle"></i>Nueva receta</button>
+          <button class="btn btn-outline-secondary"><i class="bi bi-clock-history"></i>Historial de recetas</button>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Medicamento</th>
+                  <th>Dosis</th>
+                  <th>Frecuencia</th>
+                  <th>Días</th>
+                  <th>Indicaciones</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input class="form-control form-control-sm" placeholder="Paracetamol 500 mg" /></td>
+                  <td><input class="form-control form-control-sm" placeholder="1 tableta" /></td>
+                  <td><input class="form-control form-control-sm" placeholder="cada 8 h" /></td>
+                  <td><input class="form-control form-control-sm" placeholder="5" /></td>
+                  <td><input class="form-control form-control-sm" placeholder="Tomar con agua" /></td>
+                  <td><button class="btn btn-sm btn-outline-danger"><i class="bi bi-x"></i></button></td>
+                </tr>
+                <tr>
+                  <td><input class="form-control form-control-sm" placeholder="Amoxicilina 500 mg" /></td>
+                  <td><input class="form-control form-control-sm" placeholder="1 cápsula" /></td>
+                  <td><input class="form-control form-control-sm" placeholder="cada 12 h" /></td>
+                  <td><input class="form-control form-control-sm" placeholder="7" /></td>
+                  <td><input class="form-control form-control-sm" placeholder="Después de alimentos" /></td>
+                  <td><button class="btn btn-sm btn-outline-danger"><i class="bi bi-x"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row g-3 align-items-center">
+            <div class="col-md-4">
+              <div class="qr-box">QR Receta</div>
+            </div>
+            <div class="col-md-8">
+              <div class="mb-2">Estatus: <span class="badge text-bg-secondary">Borrador</span></div>
+              <div class="d-flex gap-2 flex-wrap">
+                <button class="btn btn-primary"><i class="bi bi-qr-code"></i>Generar QR</button>
+                <button class="btn btn-success"><i class="bi bi-send"></i>Enviar a Farmacia</button>
+                <button class="btn btn-outline-secondary"><i class="bi bi-printer"></i>Imprimir / PDF</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h6 class="mb-3">Recetas recientes</h6>
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Paciente</th>
+                  <th>Consultorio</th>
+                  <th>Doctor</th>
+                  <th>Estatus envío</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>2025-08-26</td><td>Juliana Doe</td><td>Santa Ana</td><td>Dr. Pérez</td><td><span class="badge text-bg-success">Enviada</span></td></tr>
+                <tr><td>2025-08-25</td><td>Carlos Méndez</td><td>San Román</td><td>Dra. Ruiz</td><td><span class="badge text-bg-secondary">Borrador</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) VALIDAR RECETA -->
+    <section id="view-validar" class="section">
+      <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-secondary me-2" data-target="view-dashboard"><i class="bi bi-arrow-left"></i>Volver</button>
+        <h2 class="h4 mb-0">Validar Receta (QR)</h2>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <div class="col-md-4">
+          <div class="qr-box">Escáner/Imagen QR</div>
+        </div>
+        <div class="col-md-8">
+          <label class="form-label">Pegar código / token</label>
+          <div class="input-group mb-2">
+            <span class="input-group-text"><i class="bi bi-qr-code"></i></span>
+            <input class="form-control" placeholder="qr_token_abcdef123" />
+            <button class="btn btn-primary"><i class="bi bi-check2-circle"></i>Validar</button>
+          </div>
+          <div class="alert alert-info">Resultado: pendiente</div>
+          <div class="d-flex gap-2 flex-wrap">
+            <button class="btn btn-outline-secondary"><i class="bi bi-printer"></i>Reimprimir</button>
+            <button class="btn btn-outline-success"><i class="bi bi-box-seam"></i>Marcar como entregada</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6) HISTORIAL -->
+    <section id="view-historial" class="section">
+      <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-secondary me-2" data-target="view-dashboard"><i class="bi bi-arrow-left"></i>Volver</button>
+        <h2 class="h4 mb-0">Historial</h2>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Paciente</label>
+          <input class="form-control" placeholder="Seleccionar" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Rango de fechas</label>
+          <div class="input-group">
+            <input type="date" class="form-control">
+            <span class="input-group-text">a</span>
+            <input type="date" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Tipo</th>
+                  <th>Resumen</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>2025-08-26</td><td>Consulta</td><td>Faringitis – Paracetamol</td><td><button class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i>Ver</button></td></tr>
+                <tr><td>2025-08-20</td><td>Glucosa</td><td>92 mg/dL</td><td><button class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i>Ver</button></td></tr>
+                <tr><td>2025-08-18</td><td>Presión</td><td>118/76 mmHg</td><td><button class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i>Ver</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7) TAREAS / ALERTAS -->
+    <section id="view-tareas" class="section">
+      <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-secondary me-2" data-target="view-dashboard"><i class="bi bi-arrow-left"></i>Volver</button>
+        <h2 class="h4 mb-0">Tareas / Alertas</h2>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-6">
+          <h6 class="text-muted">Recordatorios</h6>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Revisar laboratorio – Juliana Doe
+              <button class="btn btn-sm btn-outline-success"><i class="bi bi-check2"></i>Hecho</button>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Control DM – Carlos Méndez (3 meses)
+              <button class="btn btn-sm btn-outline-success"><i class="bi bi-check2"></i>Hecho</button>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h6 class="text-muted">Alertas</h6>
+          <div class="alert alert-warning">Paciente con PA &gt; 140/90 en 2 últimas consultas.</div>
+          <div class="alert alert-info">Nueva cita programada mañana 08:30 en Santa Ana.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8) TELECONSULTA -->
+    <section id="view-teleconsulta" class="section">
+      <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-secondary me-2" data-target="view-dashboard"><i class="bi bi-arrow-left"></i>Volver</button>
+        <h2 class="h4 mb-0">Teleconsulta</h2>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-4">
+          <label class="form-label">Paciente</label>
+          <input class="form-control" placeholder="Seleccionar" />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Fecha y hora</label>
+          <input type="datetime-local" class="form-control" />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Modo</label>
+          <select class="form-select">
+            <option>Video</option>
+            <option>Llamada</option>
+            <option>Chat</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <div class="col-md-6">
+          <div class="video-box mb-2">[Vista previa / Enlace a sala]</div>
+          <div class="input-group mb-2">
+            <span class="input-group-text"><i class="bi bi-link-45deg"></i></span>
+            <input class="form-control" value="https://sala.itzamnafarma/xyz" />
+          </div>
+          <div class="d-flex gap-2 flex-wrap">
+            <button class="btn btn-success"><i class="bi bi-camera-video"></i>Iniciar</button>
+            <button class="btn btn-outline-primary"><i class="bi bi-clipboard"></i>Copiar enlace</button>
+            <button class="btn btn-outline-secondary"><i class="bi bi-chat-dots"></i>Enviar por SMS/Email</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h6 class="text-muted">Próximas teleconsultas</h6>
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Paciente</th>
+                  <th>Modo</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>2025-08-27 10:30</td><td>Juliana Doe</td><td>Video</td><td><button class="btn btn-sm btn-outline-primary"><i class="bi bi-box-arrow-up-right"></i>Abrir</button></td></tr>
+                <tr><td>2025-08-27 12:00</td><td>Ana López</td><td>Chat</td><td><button class="btn btn-sm btn-outline-primary"><i class="bi bi-box-arrow-up-right"></i>Abrir</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="small text-muted">Nota: en producción se integrará con Jitsi/Twilio/Whereby para generar enlaces únicos por cita.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9) CONFIGURACIÓN -->
+    <section id="view-config" class="section">
+      <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-secondary me-2" data-target="view-dashboard"><i class="bi bi-arrow-left"></i>Volver</button>
+        <h2 class="h4 mb-0">Configuración del Médico</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Nombre</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                <input class="form-control" value="Dr. Juan Pérez" />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Cédula profesional</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-award"></i></span>
+                <input class="form-control" value="1234567" />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Especialidad</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-clipboard2-pulse"></i></span>
+                <input class="form-control" value="Medicina Familiar" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                <input class="form-control" value="dr.perez@itzamnafarma.mx" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Teléfono</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                <input class="form-control" value="981-000-0000" />
+              </div>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Horarios (texto libre / JSON)</label>
+              <textarea class="form-control" rows="3">{\"lun-vie\":\"08:00-14:00\",\"sab\":\"09:00-12:00\"}</textarea>
+            </div>
+            <div class="col-12 d-flex justify-content-end">
+              <button class="btn btn-warning"><i class="bi bi-save2"></i>Guardar cambios</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container my-5 text-center text-secondary small">
+    ItzamnaFarma • Panel de Doctores • Todos los Derechos Reservados
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navegación simple entre vistas (independientes) al estilo del mockup de cliente
+    const sections = [
+      'view-dashboard','view-agenda','view-pacientes','view-consulta','view-recetas',
+      'view-validar','view-historial','view-tareas','view-teleconsulta','view-config'
+    ];
+    function showSection(id){
+      sections.forEach(s => document.getElementById(s).classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // Tarjetas del dashboard
+    document.querySelectorAll('.dash-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const target = card.getAttribute('data-target');
+        if(target) showSection(target);
+      });
+    });
+    // Botones de navegación (volver / acciones que abren secciones)
+    document.querySelectorAll('[data-target]').forEach(el => {
+      if(!el.classList.contains('dash-card')){
+        el.addEventListener('click', () => showSection(el.getAttribute('data-target')));
+      }
+    });
+  </script>
+</body>
+</html>
